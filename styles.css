@@ -1,0 +1,106 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f8fafc;
+}
+
+h1 {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.controles {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.controles button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.controles button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.3);
+}
+
+.controles button:active {
+  transform: translateY(0);
+}
+
+/* Tabuleiro Flexível para se adaptar aos níveis */
+.memory-game {
+  width: 680px;
+  max-width: 90vw;
+  min-height: 480px;
+  display: grid;
+  gap: 12px;
+  perspective: 1000px;
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-content: center;
+}
+
+/* Estilo Individual da Carta com proporção fixa excelente */
+.memory-card {
+  aspect-ratio: 3 / 4; /* Mantém a proporção correta para a carta não ficar fina nem deformada */
+  width: 100%;
+  min-width: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.memory-card:active {
+  transform: scale(0.96);
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+/* Faces da Carta */
+.memory-card img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  backface-visibility: hidden;
+  object-fit: contain; /* Ajusta a imagem mantendo a integridade visual sem cortar bordas importantes */
+  background: #334155;
+  padding: 10px; /* Dá uma margem interna elegante para os ícones SVG/PNG */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.memory-card .front-face {
+  transform: rotateY(180deg);
+}
